@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Battle</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="./../scripts/mainCtrl.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Westeros at war </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container" ng-controller="kingController">
+    	<div style="display: block;margin-bottom: 20px;">
+    		 <button type="button" id="fetchBtn" ng-click="fetchAllDetails()" class="btn btn-primary">Fetch All King Details</button>
+    	</div>
+    	<div style="display: block;margin-bottom: 20px;margin-top: 20px;">
+    		 Search :
+    		 <input type="text" ng-model="searchKingName.attacker_kings" placeholder="Search by king name" class="form-control">
+    	</div>
+       
+        <div class="row" ng-repeat="king in kingDetails | filter: searchKingName">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{king.name}}</div>
+                    <div class="panel-body">
+                   			Attacker King: {{king.attacker_king}}<br/>
+                   			Deffender King:{{king.defender_king}}<br/>
+                   			Battle Type:{{king.battle_type}}<br/>
+                   			Location:{{king.location}}<br/>
+                   			Attacker Size: {{king.attacker_size}}<br/>
+    						Defender Size:{{king.defender_size}}<br/>
+    						Win/Loss:{{king.attacker_outcome}}<br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                 <div class="panel panel-default">
+                    <div class="panel-heading">{{king.name}}</div>
+                    <div class="panel-body">
+                   			Attacker King: {{king.attacker_king}}<br/>
+                   			Deffender King:{{king.defender_king}}<br/>
+                   			Battle Type:{{king.battle_type}}<br/>
+                   			Location:{{king.location}}<br/>
+                   			Attacker Size: {{king.attacker_size}}<br/>
+    						Defender Size:{{king.defender_size}}<br/>
+    						Win/Loss:{{king.attacker_outcome}}<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-controller="warController">
+        <ul>
+            <li ng-repeat="battle in battleDetails">{{battle.name}}</li>
+        </ul>
+    </div>
+    <div class="container" ng-controller="yearController">
+    	<select ng-model="yearValue" class="form-control">
+    		<option selected>Select year </option>
+    		<option value="298">298</option>
+    		<option value="299">299</option>
+    		<option value="300">300</option>
+    	</select>
+    	 <button type="button" id="yearBtn" ng-click="fetchByYear()" class="btn btn-primary">Fetch By Year</button>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</html>
